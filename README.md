@@ -1,5 +1,14 @@
 # CarND-Path-Planning-Project
 Self-Driving Car Engineer Nanodegree Program
+
+### The model for generating paths
+1. use the previous path's end point as starting reference, use 2 points that make the path tangent to the previous path's end point
+2. shift car reference angle to 0 degree which is easy to handle
+3. create spline and set points to it
+4. then define the acutal points which used for the trajectory
+5. the trajectory start with all of the previous path points from last time
+6. fill up the rest of our path planner agter filling it with previous points, here we will always output 50 points
+7. rotate back to normal after rotating it earlier
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2).  
