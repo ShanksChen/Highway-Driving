@@ -11,17 +11,17 @@ Self-Driving Car Engineer Nanodegree Program
 7. rotate back to normal after rotating it earlier
 
 ### Something to disscus
-(```)
-  vector<double> goal_points0 = getXY(car_s + 30, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
-  ptsx.push_back(goal_points0[0]);
-  ptsy.push_back(goal_points0[1]);
-  vector<double> goal_points1 = getXY(car_s + 60, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
-  ptsx.push_back(goal_points1[0]);
-  ptsy.push_back(goal_points1[1]);
-  vector<double> goal_points2 = getXY(car_s + 90, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
-  ptsx.push_back(goal_points2[0]);
-  ptsy.push_back(goal_points2[1]);
-(```)
+```
+    vector<double> goal_points0 = getXY(car_s + 30, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
+    ptsx.push_back(goal_points0[0]);
+    ptsy.push_back(goal_points0[1]);
+    vector<double> goal_points1 = getXY(car_s + 60, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
+    ptsx.push_back(goal_points1[0]);
+    ptsy.push_back(goal_points1[1]);
+    vector<double> goal_points2 = getXY(car_s + 90, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
+    ptsx.push_back(goal_points2[0]);
+    ptsy.push_back(goal_points2[1]);
+```
 In Frenet add evenly 30m spaced points ahead of the starting reference. This is the way which shown in the walkthrough video. But in my code, it causes the error 'outside of the lane'. So I change the value to 10m. It works better than 30m. But in some case, the trajectory is serpentine. There was some problem in this part. I will study it more.
    
 ### Simulator.
