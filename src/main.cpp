@@ -315,10 +315,10 @@ double change_speed(double speed_to_match) {
   // speed up use the maximum acceleration
   double speed = velocity + max_acceleration;
   // if there a speed need to match
-  if(speed_to_match != -1) {
-    speed_to_match *= 2.24 * 0.95; // keep safe
+  if(speed_to_match != -1) { 
+    speed_to_match *= 2.24 * 0.98; // keep safe
     // slow down to match the speed
-    if(max_acceleration <= velocity) {
+    if(speed_to_match <= velocity) {
       speed = max(speed_to_match, velocity - 1.5 * max_acceleration);
     }
     // acceleration to match the speed
@@ -417,9 +417,19 @@ vector<vector<double>> generate_trajectory(vector<double> goal, double car_x, do
     ptsy.push_back(ref_y);
   }
 
-  vector<double> goal_points = getXY(goal[0], goal[1], map_waypoints_s, map_waypoints_x, map_waypoints_y);
-  ptsx.push_back(goal_points[0]);
-  ptsy.push_back(goal_points[1]);
+  // vector<double> goal_points0 = getXY(goal[0], goal[1], map_waypoints_s, map_waypoints_x, map_waypoints_y);
+  // ptsx.push_back(goal_points0[0]);
+  // ptsy.push_back(goal_points0[1]);
+  // in Frenet add evenly 10m spaced points ahead of the starting reference
+  vector<double> goal_points0 = getXY(goal[0] + 10, goal[1], map_waypoints_s, map_waypoints_x, map_waypoints_y);
+  ptsx.push_back(goal_points0[0]);
+  ptsy.push_back(goal_points0[1]);
+  vector<double> goal_points1 = getXY(goal[0] + 20, goal[1], map_waypoints_s, map_waypoints_x, map_waypoints_y);
+  ptsx.push_back(goal_points1[0]);
+  ptsy.push_back(goal_points1[1]);
+  vector<double> goal_points2 = getXY(goal[0] + 30, goal[1], map_waypoints_s, map_waypoints_x, map_waypoints_y);
+  ptsx.push_back(goal_points2[0]);
+  ptsy.push_back(goal_points2[1]);
 
   // shift car reference angle to 0 degrees
   for (size_t i = 0; i < ptsx.size(); ++i) {

@@ -9,6 +9,20 @@ Self-Driving Car Engineer Nanodegree Program
 5. the trajectory start with all of the previous path points from last time
 6. fill up the rest of our path planner agter filling it with previous points, here we will always output 50 points
 7. rotate back to normal after rotating it earlier
+
+### Something to disscus
+(```)
+  vector<double> goal_points0 = getXY(car_s + 30, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
+  ptsx.push_back(goal_points0[0]);
+  ptsy.push_back(goal_points0[1]);
+  vector<double> goal_points1 = getXY(car_s + 60, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
+  ptsx.push_back(goal_points1[0]);
+  ptsy.push_back(goal_points1[1]);
+  vector<double> goal_points2 = getXY(car_s + 90, car_d, map_waypoints_s, map_waypoints_x, map_waypoints_y);
+  ptsx.push_back(goal_points2[0]);
+  ptsy.push_back(goal_points2[1]);
+(```)
+In Frenet add evenly 30m spaced points ahead of the starting reference. This is the way which shown in the walkthrough video. But in my code, it causes the error 'outside of the lane'. So I change the value to 10m. It works better than 30m. But in some case, the trajectory is serpentine. There was some problem in this part. I will study it more.
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2).  
